@@ -6,10 +6,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Question, Answer, Comment
 from django.utils import timezone
 from django.db.models import Q, Count
+import logging
+logger = logging.getLogger('pybo')
 
 
 def index(request):
-    3/0
+    logger.info("INFO 레벨로 출력")
     """
     pybo 목록 출력
     """
