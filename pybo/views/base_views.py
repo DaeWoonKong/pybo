@@ -42,7 +42,7 @@ def index(request):
     paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여 주기
     page_obj = paginator.get_page(page)
 
-    context = {'question_list': page_obj, 'page': page, 'kw': kw}   # page와 kw가 추가됨
+    context = {'question_list': page_obj, 'page': page, 'kw': kw, 'so': so}   # page와 kw가 추가됨 so 추가
     return render(request, 'pybo/question_list.html', context)
 
 

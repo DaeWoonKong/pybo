@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
 {% block content %}
-<div class="container my-3">
-    <div class="row justify-content-between my-3">
+<div class="container my-4">
+    <div class="row justify-content-center my-4">
         <div class="col-2">
             <select class="form-control so">
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>
-                    최신순
+                    최신
                 </option>
                 <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>
-                    추천순
+                    추천
                 </option>
                 <option value="popular" {% if so == 'popular' %}selected{% endif %}>
-                    인기순
+                    인기
                 </option>
             </select>
         </div>
         <div class="col-4 input-group">
             <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+                <button class="btn btn-outline-secondary" type="button" id="btn_search" style="background-color:black ; color:azure;">찾기</button>
             </div>
         </div>
     </div>
     <table class="table">
         <thead>
-        <tr class="text-center thead-dark">
+        <tr class="text-center thead-light" style="font-size: large; font-style: oblique;">
             <th>번호</th>
             <th>추천</th>
             <th style="width:50%">제목</th>
@@ -36,11 +36,11 @@
         <tbody>
         {% if question_list %}
         {% for question in question_list %}
-        <tr class="text-center">
+        <tr class="text-center" style="background-color:cornsilk; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
             <td>
                 {% if question.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">
+                <span class="badge badge-warning px-3 py-1" style="background-color: gold; color: blueviolet; font-size: large;">
                     {{ question.voter.all.count }}
                 </span>
                 {% endif %}
@@ -50,7 +50,7 @@
                     {{ question.subject }}
                 </a>
                 {% if question.answer_set.count > 0 %}
-                <span class="text_danger small ml-2">
+                <span class="text_danger small ml-3" style="color:darkblue ;">
                     {{ question.answer_set.count }}
                 </span>
                 {% endif %}
@@ -67,17 +67,17 @@
         </tbody>
     </table>
     <!-- 페이징 처리 시작 -->
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-center" style="margin-top: 20px;">
         <!-- 이전 페이지 -->
         {% if question_list.has_previous %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ question_list.previous_page_number }}" href="#">
+            <a class="page-link" data-page="{{ question_list.previous_page_number }}" href="#" style="font-weight: bold;">
                 이전
             </a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#" style="font-weight: bold;">
                 이전
             </a>
         </li>
@@ -103,21 +103,21 @@
         <!-- 다음 페이지 -->
         {% if question_list.has_next %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ question_list.next_page_number }}" href="#">
+            <a class="page-link" data-page="{{ question_list.next_page_number }}" href="#" style="font-weight: bold;">
                 다음
             </a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#" style="font-weight: bold;">
                 다음
             </a>
         </li>
         {% endif %}
     </ul>
     <!-- 페이징 처리 끝 -->
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">
-        질문 등록하기
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary btn-outline-secondary" style="float: right; background-color: darkturquoise; color:honeydew; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+        <strong>질문 등록하기</strong>
     </a>
     <form id="searchForm" method="get" action="{% url 'index' %}">
         <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
