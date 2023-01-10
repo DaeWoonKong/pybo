@@ -6,11 +6,11 @@
     <form method="post" class="post-form my-3">
         <div class="form-group">
             <label for="subject" style="font-size: large; font-family: 'Times New Roman', Times, serif; font-weight: bold;">제목</label>
-            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}" style="background-color:whitesmoke; border-color:cornflowerblue;">
+            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}" style="border-color:cornflowerblue;">
         </div>
         <div class="form-group">
             <label for="content" style="font-size: large; font-family: 'Times New Roman', Times, serif; font-weight: bold;">내용</label>
-            <textarea class="form-control" name="content" id="content" rows="8" style="background-color:whitesmoke; border-color:cornflowerblue;">
+            <textarea class="form-control" name="content" id="content" rows="8" style="border-color:cornflowerblue;">
                 {{ form.content.value|default_if_none:'' }}
             </textarea>
         </div>

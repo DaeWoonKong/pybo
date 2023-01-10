@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="content" style="font-size: large; font-family: 'Times New Roman', Times, serif; font-weight: bold;">댓글내용</label>
             <textarea class="form-control" name="content" id="content"
-                      rows="5" style="background-color:whitesmoke; border-color:cornflowerblue;">{{ form.content.value|default_if_none:'' }}</textarea>
+                      rows="5" style="border-color:cornflowerblue;">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="background-color: darkturquoise; color:honeydew; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">저장하기</button>
     </form>
